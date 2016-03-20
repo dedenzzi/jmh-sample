@@ -15,12 +15,14 @@ public class StreamBenchmark {
 
         @Setup(Level.Trial)
         public void setUp() {
+            System.out.println("setUp()");
             startNumber = 0;
             endNumber = 10000;
         }
 
         @TearDown(Level.Trial)
         public void tearDown() {
+            System.out.println("tearDown()");
         }
     }
 
