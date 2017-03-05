@@ -23,6 +23,7 @@ import org.openjdk.jmh.annotations.Warmup;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class ListAdd {
+	private static int LOOP_COUNT=1000;
 	
 	@org.openjdk.jmh.annotations.State(Scope.Thread)
 	public static class State {
@@ -41,30 +42,19 @@ public class ListAdd {
 				LinkedListForSearch.add("Hello");
 			}
 		}
-	}
-		private static int LOOP_COUNT=1000;
-			List<Integer> arrayList;
-			List<Integer> vector;
-			List<Integer> linkedList;	
+	}	
+
 	@Benchmark
 	public void addArrayList() {
-		arrayList=new ArrayList<Integer>();
+		List<Integer> arrayList=new ArrayList<Integer>();
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
 			arrayList.add(loop);
 		}
-	}
-	
-	@Benchmark
-	public void addArrayListWithInitialSize() {
-		arrayList=new ArrayList<Integer>(LOOP_COUNT);
-		for(int loop=0;loop<LOOP_COUNT;loop++) {
-			arrayList.add(loop);
-		}
-	}
-	
+	}	
+
 	@Benchmark
 	public void addVector() {
-		vector=new Vector<Integer>();
+		List<Integer> vector=new Vector<Integer>();
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
 			vector.add(loop);
 		}
@@ -72,7 +62,7 @@ public class ListAdd {
 	
 	@Benchmark
 	public void addLinkedList() {
-		linkedList=new LinkedList<Integer>();
+		List<Integer> linkedList=new LinkedList<Integer>();
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
 			linkedList.add(loop);
 		}
