@@ -45,7 +45,7 @@ public class ListAdd {
 //JMH 를 사용하여 Java SE 에 있는 List 를 구현한 클래스들의 추가/조회/삭제 기능의 성능을 비교하시오.
 //JMH 를 사용하여 Java SE 에 있는 Map을 구현한 클래스들의 추가/조회/삭제 기능의 성능을 비교하시오.
 
-    @GenerateMicroBenchmark
+    @Benchmark
 	public void addArrayList(State state, Blackhole blackhol) {
 		arrayList=new ArrayList<Integer>();
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
@@ -54,7 +54,7 @@ public class ListAdd {
 		blackhole.consume(intList);
 	}
 	
-	@GenerateMicroBenchmark
+	@Benchmark
 	public void addArrayListWithInitialSize(State state, Blackhole blackhol) {
 		arrayList=new ArrayList<Integer>(LOOP_COUNT);
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
@@ -63,7 +63,7 @@ public class ListAdd {
 		blackhole.consume(intList);
 	}
 	
-	@GenerateMicroBenchmark
+	@Benchmark
 	public void addVector(State state, Blackhole blackhol) {
 		vector=new Vector<Integer>();
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
@@ -72,7 +72,7 @@ public class ListAdd {
 		blackhole.consume(intList);
 	}
 	
-	@GenerateMicroBenchmark
+	@Benchmark
 	public void addLinkedList(State state, Blackhole blackhol) {
 		linkedList=new LinkedList<Integer>();
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
