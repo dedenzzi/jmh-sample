@@ -32,6 +32,7 @@ public class StreamBenchmark {
 //JMH 를 사용하여 Java SE 에 있는 List 를 구현한 클래스들의 추가/조회/삭제 기능의 성능을 비교하시오.
 //JMH 를 사용하여 Java SE 에 있는 Map을 구현한 클래스들의 추가/조회/삭제 기능의 성능을 비교하시오.
     @Benchmark
+    @Fork(1) 
     @Warmup(iterations=1) 
     @Measurement(iterations=1) 
     @BenchmarkMode(Mode.Throughput)
