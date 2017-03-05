@@ -38,12 +38,4 @@ public class StreamBenchmark {
         }
         blackhole.consume(intList);
     }
-
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    public void testSummingByStream(State state, Blackhole blackhole) {
-        blackhole.consume(
-                IntStream.range(state.startNumber, state.endNumber).sum());
-    }
 }
