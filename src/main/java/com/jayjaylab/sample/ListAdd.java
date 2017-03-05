@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+@State(Scope.Thread)
+@BenchmarkMode({ Mode.AverageTime })
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class ListAdd {
     @org.openjdk.jmh.annotations.State(Scope.Thread)
     public static class State {
@@ -35,7 +37,6 @@ public class ListAdd {
     @Fork(1) 
     @Warmup(iterations=1) 
     @Measurement(iterations=1) 
-    @BenchmarkMode(Mode.Throughput)
     public void testSummingByForLoop(State state, Blackhole blackhole) {
         
         List<Integer> intList = new ArrayList<>();
