@@ -24,20 +24,28 @@ import org.openjdk.jmh.annotations.Warmup;
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class ListAdd {
 	
-	int LOOP_COUNT=1000;
-	List<Integer> arrayList;
-	List<Integer> vector;
-	List<Integer> linkedList;
-	
 	@org.openjdk.jmh.annotations.State(Scope.Thread)
 	public static class State {
-	
+		List<String> arrayListForSearch = new ArrayList<>();
+		List<String> LinkedListForSearch = new LinkedList<>();
+
 		@Setup(Level.Trial)
 		public void setUp() {
+			
+			
 
+			for (int i = 0; i < 100; i++) {
+				arrayListForSearch.add("Hello");
+			}
+			for (int i = 0; i < 100; i++) {
+				LinkedListForSearch.add("Hello");
+			}
 		}
-	}	
-	
+	}
+		int LOOP_COUNT=1000;
+			List<Integer> arrayList;
+			List<Integer> vector;
+			List<Integer> linkedList;	
 	@Benchmark
 	public void addArrayList() {
 		arrayList=new ArrayList<Integer>();
