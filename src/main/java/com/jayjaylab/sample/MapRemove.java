@@ -22,7 +22,7 @@ import java.util.LinkedHashMap;
 @Measurement(iterations=5) 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-public class MapGet {
+public class MapRemove {
     @org.openjdk.jmh.annotations.State(Scope.Thread)
     public static class State {
         int startNumber;
