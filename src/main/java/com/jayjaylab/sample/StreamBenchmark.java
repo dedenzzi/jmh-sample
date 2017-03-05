@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.TreeMap;
-import jvaa.util.LinkedHashMap;
+import java.util.LinkedHashMap;
 
 @Fork(1) 
 @Warmup(iterations=5) 
