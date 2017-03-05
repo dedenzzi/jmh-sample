@@ -23,90 +23,51 @@ import org.openjdk.jmh.annotations.Warmup;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class ListAdd {
-
+	
+	int LOOP_COUNT=1000;
+	List<Integer> arrayList;
+	List<Integer> vector;
+	List<Integer> linkedList;
 	
 	@org.openjdk.jmh.annotations.State(Scope.Thread)
 	public static class State {
-		List<String> arrayListForSearch = new ArrayList<>();
-		List<String> LinkedListForSearch = new LinkedList<>();
-
+	
 		@Setup(Level.Trial)
 		public void setUp() {
 
-			for (int i = 0; i < 100; i++) {
-				arrayListForSearch.add("Hello");
-			}
-			for (int i = 0; i < 100; i++) {
-				LinkedListForSearch.add("Hello");
-			}
+		}
+	}	
+	
+	@Benchmark
+	public void addArrayList() {
+		arrayList=new ArrayList<Integer>();
+		for(int loop=0;loop<LOOP_COUNT;loop++) {
+			arrayList.add(loop);
 		}
 	}
-
-    @Benchmark
-    public void addIntoArrayList() {
-
-    	List<String> arrayList = new ArrayList<>();
-		for (int i = 0; i < 100; i++) {
-			arrayList.add("Hello");
-		}
-        		
-    }
-    
-    @Benchmark
-    public void addIntoLinkedList() {
-
-		List<String> linkedList = new LinkedList<>();
-		for (int i = 0; i < 100; i++) {
-			linkedList.add("Hello");
-		}
-        		
-    }
-    
-    
-    
-    @Benchmark
-    public void searchArrayList(State state) {
-
-    	List<String> arrayList = state.arrayListForSearch;
-    	for (int i = 0; i < 100; i++) {
-    		arrayList.get(i);
-		}
-        		
-    }
-    
-    @Benchmark
-    public void searchLinkedList(State state) {
-
-		List<String> linkedList = state.LinkedListForSearch;
-		
-		for (int i = 0; i < 100; i++) {
-			linkedList.get(i);
-		}
 	
-
-        		
-    }
-    
-    @Benchmark
-    public void deleteFromArrayList() {
-
-		List<String> arrayList = new ArrayList<>();
-		for (int i = 0; i < 100; i++) {
-			arrayList.remove(((100-i)/2));
+	@Benchmark
+	public void addArrayListWithInitialSize() {
+		arrayList=new ArrayList<Integer>(LOOP_COUNT);
+		for(int loop=0;loop<LOOP_COUNT;loop++) {
+			arrayList.add(loop);
 		}
-        		
-    }
-    @Benchmark
-    public void deleteFromLinkedList() {
-
-		List<String> linkedList = new LinkedList<>();
-		for (int i = 0; i < 100; i++) {
-			linkedList.remove(0);
+	}
+	
+	@Benchmark
+	public void addVector() {
+		vector=new Vector<Integer>();
+		for(int loop=0;loop<LOOP_COUNT;loop++) {
+			vector.add(loop);
 		}
-        		
-    }
-
-    
-    
+	}
+	
+	@Benchmark
+	public void addLinkedList() {
+		linkedList=new LinkedList<Integer>();
+		for(int loop=0;loop<LOOP_COUNT;loop++) {
+			linkedList.add(loop);
+		}
+	}    
 
 }
