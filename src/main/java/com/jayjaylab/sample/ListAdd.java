@@ -22,7 +22,7 @@ public class ListAdd  {
 	List<Integer> vector;
 	List<Integer> linkedList;
 	
-	@GenerateMicroBenchmark
+	@Benchmark
 	public void addArrayList() {
 		arrayList=new ArrayList<Integer>();
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
@@ -30,7 +30,7 @@ public class ListAdd  {
 		}
 	}
 	
-	@GenerateMicroBenchmark
+	@Benchmark
 	public void addArrayListWithInitialSize() {
 		arrayList=new ArrayList<Integer>(LOOP_COUNT);
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
@@ -38,7 +38,7 @@ public class ListAdd  {
 		}
 	}
 	
-	@GenerateMicroBenchmark
+	@Benchmark
 	public void addVector() {
 		vector=new Vector<Integer>();
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
@@ -46,7 +46,7 @@ public class ListAdd  {
 		}
 	}
 	
-	@GenerateMicroBenchmark
+	@Benchmark
 	public void addLinkedList() {
 		linkedList=new LinkedList<Integer>();
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
