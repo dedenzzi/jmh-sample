@@ -25,16 +25,18 @@ public class StreamBenchmark {
             System.out.println("tearDown()");
         }
     }
-
+//JMH 를 사용하여 Java SE 에 있는 List 를 구현한 클래스들의 추가/조회/삭제 기능의 성능을 비교하시오.
+//JMH 를 사용하여 Java SE 에 있는 Map을 구현한 클래스들의 추가/조회/삭제 기능의 성능을 비교하시오.
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
     @OutputTimeUnit(TimeUnit.SECONDS)
     public void testSummingByForLoop(State state, Blackhole blackhole) {
-        long sum = 0l;
+        
+        List<Integer> intList = new ArrayList<>();
         for(int i = state.startNumber; i < state.endNumber; i++) {
-            sum += i;
+            intList.add(i)
         }
-        blackhole.consume(sum);
+        blackhole.consume(intList);
     }
 
     @Benchmark
