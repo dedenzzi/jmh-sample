@@ -8,6 +8,9 @@ import java.util.stream.IntStream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.List;
+import java.util.Vector;
+import java.util.concurrent.TimeUnit;
 
 
 @State(Scope.Thread)
@@ -17,6 +20,11 @@ import java.util.List;
 @Warmup(iterations=1) 
 @Measurement(iterations=1) 
 public class ListAdd {
+    int LOOP_COUNT=1000;
+	List<Integer> arrayList;
+	List<Integer> vector;
+	List<Integer> linkedList;
+	
     @org.openjdk.jmh.annotations.State(Scope.Thread)
     public static class State {
         int startNumber;
@@ -45,4 +53,37 @@ public class ListAdd {
         }
         blackhole.consume(intList);
     }
+    @GenerateMicroBenchmark
+	public void addArrayList() {
+		arrayList=new ArrayList<Integer>();
+		for(int loop=0;loop<LOOP_COUNT;loop++) {
+			arrayList.add(loop);
+		}
+	}
+	
+	@GenerateMicroBenchmark
+	public void addArrayListWithInitialSize() {
+		arrayList=new ArrayList<Integer>(LOOP_COUNT);
+		for(int loop=0;loop<LOOP_COUNT;loop++) {
+			arrayList.add(loop);
+		}
+	}
+	
+	@GenerateMicroBenchmark
+	public void addVector() {
+		vector=new Vector<Integer>();
+		for(int loop=0;loop<LOOP_COUNT;loop++) {
+			vector.add(loop);
+		}
+	}
+	
+	@GenerateMicroBenchmark
+	public void addLinkedList() {
+		linkedList=new LinkedList<Integer>();
+		for(int loop=0;loop<LOOP_COUNT;loop++) {
+			linkedList.add(loop);
+		}
+	}
+    
+    
 }
