@@ -11,11 +11,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.TreeMap;
+import jvaa.util.LinkedHashMap;
 
 @Fork(1) 
 @Warmup(iterations=5) 
@@ -178,6 +178,16 @@ public class StreamBenchmark {
         blackhole.consume(map);
     }
 	
+    @Benchmark
+    public void testLinkedHashMapAdd(State state, Blackhole blackhole) {
+        
+		Map<String, Integer> map = new LinkedHashMap<>();
+        
+        for(int i = state.startNumber; i < state.endNumber; i++) {
+            map.put("1"+i,1);
+        }
+        blackhole.consume(map);
+    }
 	
     @Benchmark
     public void testHashMapGet(State state, Blackhole blackhole) {
@@ -194,7 +204,7 @@ public class StreamBenchmark {
     @Benchmark
     public void testHashTableGet(State state, Blackhole blackhole) {
 
-		Map<String, Integer> map = new Hashtable<>();
+	Map<String, Integer> map = new Hashtable<>();
         map.put("1",1);	
         for(int i = state.startNumber; i < state.endNumber; i++) {
             map.get("1");
@@ -206,7 +216,18 @@ public class StreamBenchmark {
     @Benchmark
     public void testTreeMapGet(State state, Blackhole blackhole) {
         
-		Map<String, Integer> map = new TreeMap<>();
+	Map<String, Integer> map = new TreeMap<>();
+	map.put("1",1);	
+        for(int i = state.startNumber; i < state.endNumber; i++) {
+            map.get("1");
+        }
+        blackhole.consume(map);
+    }
+	
+    @Benchmark
+    public void testLinkedHashMapGet(State state, Blackhole blackhole) {
+        
+	Map<String, Integer> map = new LinkedHashMap<>();
 	map.put("1",1);	
         for(int i = state.startNumber; i < state.endNumber; i++) {
             map.get("1");
@@ -245,6 +266,18 @@ public class StreamBenchmark {
     public void testTreeMapRemove(State state, Blackhole blackhole) {
         
 	Map<String, Integer> map = new TreeMap<>();
+	
+        for(int i = state.startNumber; i < state.endNumber; i++) {
+		map.put("1",1);	
+            	map.remove("1");
+        }
+        blackhole.consume(map);
+    }
+	
+    @Benchmark
+    public void testLinkedHashMapRemove(State state, Blackhole blackhole) {
+        
+	Map<String, Integer> map = new LinkedHashMap<>();
 	
         for(int i = state.startNumber; i < state.endNumber; i++) {
 		map.put("1",1);	
