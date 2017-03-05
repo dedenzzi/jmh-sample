@@ -34,7 +34,7 @@ public class StreamBenchmark {
         
         List<Integer> intList = new ArrayList<>();
         for(int i = state.startNumber; i < state.endNumber; i++) {
-            intList.add(i)
+            intList.add(i);
         }
         blackhole.consume(intList);
     }
