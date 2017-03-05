@@ -39,6 +39,12 @@ public class ListGet {
 			linkedList.add(loop);
 		}
 	}
+	
+	@TearDown(Level.Trial)
+        public void tearDown() {
+            System.out.println("tearDown()");
+        }
+	
 	@Benchmark
 	public void getArrayList() {
 		for(int loop=0;loop<LOOP_COUNT;loop++) {
