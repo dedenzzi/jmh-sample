@@ -24,7 +24,7 @@ import org.openjdk.jmh.annotations.Warmup;
 @Measurement(iterations=5) 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
-public class ListAdd {
+public class ListGet {
 	int LOOP_COUNT=1000;
 	List<Integer> arrayList;
 	List<Integer> vector;
