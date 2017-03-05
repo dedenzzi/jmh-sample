@@ -26,11 +26,10 @@ import org.openjdk.jmh.annotations.Warmup;
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 public class ListGet {
 	private static int LOOP_COUNT=1000;
-		
-	int result=0;
 	
 	@Setup(Level.Trial) 
 	public void setUp() {
+		int result=0;
 		List<Integer> arrayList=new ArrayList<Integer>();
 		List<Integer> vector=new Vector<Integer>();
 		LinkedList<Integer> linkedList=new LinkedList<Integer>();
