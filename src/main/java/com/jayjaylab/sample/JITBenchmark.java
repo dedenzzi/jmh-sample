@@ -16,8 +16,6 @@ public class JITBenchmark {
     public static void main(String[] args) throws RunnerException {
         Options opt = new OptionsBuilder()
                 .include(".*" + JITBenchmark.class.getSimpleName() + ".*")
-                .warmupIterations(3)
-                .measurementIterations(3)
                 .forks(1)
                 .build();
 
